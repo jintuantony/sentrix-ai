@@ -1,3 +1,4 @@
+<p align="center"><img src="docs/sentrix_logo_dark.png" width="520"></p>
 # Sentrix AI
 
 A SOC analyst assistant that finds attack techniques in Windows Sysmon logs, rebuilds the attack chain with MITRE ATT&CK tags, and helps an L1 analyst triage it through a chat interface.
@@ -59,7 +60,7 @@ PowerShell abuse is the weakest category.
 Requirements: Windows, Python 3.11+, [Ollama](https://ollama.com) with `llama3.2:3b` (`ollama pull llama3.2:3b`).
 
 ```powershell
-git clone <repo-url>
+git clone https://github.com/jintuantony/sentrix-ai.git
 cd soc-ai-project
 python -m venv venv
 .\venv\Scripts\Activate.ps1
